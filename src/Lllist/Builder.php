@@ -100,7 +100,8 @@ class Builder
         return $this;
     }
 
-    public function itemsf($format, array $items, ?callable $callable = null) {
+    public function itemsf($format, array $items, ?callable $callable = null)
+    {
         foreach ($items as $item) {
             $this->appendf($format, $item, $callable);
         }
@@ -259,8 +260,21 @@ class Builder
         return $parts;
     }
 
+    private function trimHead(array $parts)
+    {
+        /** @var Part $part */
+        $part = Utils::head($parts);
 
-    private function trimEmptyValues($parts)
+        if ($part && !$part->isValue()) {
+            array_shift($parts);
+
+            return $this->trimHead($parts);
+        }
+
+        return $parts;
+    }
+
+    private function trimLast(array $parts)
     {
         /** @var Part $part */
         $part = Utils::last($parts);
@@ -268,16 +282,17 @@ class Builder
         if ($part && !$part->isValue()) {
             array_pop($parts);
 
-            $this->trimEmptyValues($parts);
+            return $this->trimLast($parts);
         }
 
-        $part = Utils::head($parts);
+        return $parts;
+    }
 
-        if ($part && !$part->isValue()) {
-            array_shift($parts);
 
-            $this->trimEmptyValues($parts);
-        }
+    private function trimEmptyValues($parts)
+    {
+        $parts = $this->trimLast($parts);
+        $parts = $this->trimHead($parts);
 
         return $parts;
     }

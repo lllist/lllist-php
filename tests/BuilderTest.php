@@ -4,6 +4,26 @@ use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
+    public function testTruncate()
+    {
+        $list = lllist(", ")
+            ->truncate(3, lllist(", ", " and ")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s")
+                ->pluralizef(null, "%s", "%s"))
+            ->strictAppendf("%dm²", 0)
+            ->append(null)
+            ->sep(" - ")
+            ->append("Hehe");
+
+        $this->assertEquals("Hehe", $list->compile());
+    }
+
     public function testDoc1()
     {
         $list = lllist(', ', ' and ')
