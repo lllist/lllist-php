@@ -12,9 +12,9 @@ Which will output `apple, bananas and grapes`
 or
 
 ```php
-lllist(', ')
+lllist(', ', ' and ')
     ->items(['apple', 'bananas', 'grapes'])
-    ->append(' and also ')
+    ->sep(' and also ')
     ->append(null)
 ```
 

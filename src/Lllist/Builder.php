@@ -239,8 +239,9 @@ class Builder
             return $part->is(Part::TYPE_SEPARATOR);
         });
 
+
         if ($result && list($index) = $result) {
-            $this->parts[$index] = $this->defaultLastSeparator;
+            $parts[$index] = $this->defaultLastSeparator;
         }
 
         return $parts;

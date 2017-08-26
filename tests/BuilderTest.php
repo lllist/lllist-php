@@ -4,6 +4,24 @@ use PHPUnit\Framework\TestCase;
 
 class BuilderTest extends TestCase
 {
+    public function testDoc1()
+    {
+        $list = lllist(', ', ' and ')
+            ->items(['apple', 'bananas', 'grapes']);
+
+        $this->assertEquals('apple, bananas and grapes', $list->compile());
+    }
+
+    public function testDoc2()
+    {
+        $list = lllist(', ', ' and ')
+            ->items(['apple', 'bananas', 'grapes'])
+            ->sep(' and also ')
+            ->append(null);
+
+        $this->assertEquals('apple, bananas and grapes', $list->compile());
+    }
+
     public function testHelper()
     {
         $list = lllist();
