@@ -1,4 +1,8 @@
-# Lllist <img src="https://api.travis-ci.org/lllist/lllist-php.svg?branch=master" />
+# Lllist [![Build Status](https://api.travis-ci.org/lllist/lllist-php.svg?branch=master)](https://travis-ci.org/lllist/lllist-php) [![Latest Stable Version](https://poser.pugx.org/lllist/lllist-php/v/stable)](https://packagist.org/packages/lllist/lllist-php) [![Total Downloads](https://poser.pugx.org/lllist/lllist-php/downloads)](https://packagist.org/packages/lllist/lllist-php) [![Latest Unstable Version](https://poser.pugx.org/lllist/lllist-php/v/unstable)](https://packagist.org/packages/lllist/lllist-php) [![License](https://poser.pugx.org/lllist/lllist-php/license)](https://packagist.org/packages/lllist/lllist-php)
+
+</center>
+
+-------------------------------
 
 Hate build conditional _lists, phrases, texts_? Me too. This library is made to avoid code boilerplate when building
 lists, and also avoid things like: `Josecleiton likes: apple, bananas, grapes` 
