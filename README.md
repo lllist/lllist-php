@@ -20,4 +20,17 @@ lllist(', ', ' and ')
 
 Which will output `apple, bananas and grapes` too, because lllist ignores empty values and also trim separators.
 
+If you give lllist an empty list it will return `null`, because it's the right thing to do™.
+
+Example:
+
+```php
+lllist(', ', ' and ')
+    ->items([])
+    ->sep(' and also ')
+    ->append(null)
+```
+
+Will output `null` :+1:.
+
 Documentation will be released.

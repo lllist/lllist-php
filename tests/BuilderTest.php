@@ -22,6 +22,16 @@ class BuilderTest extends TestCase
         $this->assertEquals('apple, bananas and grapes', $list->compile());
     }
 
+    public function testDoc3()
+    {
+        $list = lllist(', ', ' and ')
+            ->items([])
+            ->sep(' and also ')
+            ->append(null);
+
+        $this->assertNull($list->compile());
+    }
+
     public function testHelper()
     {
         $list = lllist();
