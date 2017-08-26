@@ -34,3 +34,6 @@ lllist(', ', ' and ')
 Will output `null` :+1:.
 
 Documentation will be released.
+
+
+Made with :heart: by [Wesley Schleumer](https://github.com/schleumer)
