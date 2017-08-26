@@ -3,9 +3,11 @@ lists, and also avoid things like: `Josecleiton likes: apple, bananas, grapes`
 or `Josecleiton likes: apple, grapes and also do null`, you could simply:
 
 ```php
-lllist(', ')
+lllist(', ', ' and ')
     ->items(['apple', 'bananas', 'grapes'])
 ```
+
+Which will output `apple, bananas and grapes`
 
 or
 
@@ -15,5 +17,7 @@ lllist(', ')
     ->append(' and also ')
     ->append(null)
 ```
+
+Which will output `apple, bananas and grapes` too, because lllist ignores empty values and also trim separators.
 
 Documentation will be released.
