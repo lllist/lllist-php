@@ -1,10 +1,5 @@
 # Lllist [![Build Status](https://img.shields.io/travis/lllist/lllist-php.svg)](https://travis-ci.org/lllist/lllist-php) [![Latest Stable Version](https://img.shields.io/packagist/v/lllist/lllist-php.svg)](https://packagist.org/packages/lllist/lllist-php) [![Total Downloads](https://img.shields.io/packagist/dt/lllist/lllist-php.svg)](https://packagist.org/packages/lllist/lllist-php) [![Latest Unstable Version](https://img.shields.io/packagist/vpre/lllist/lllist-php.svg)](https://packagist.org/packages/lllist/lllist-php) [![License](https://img.shields.io/github/license/lllist/lllist-php.svg)](https://github.com/lllist/lllist-php/blob/master/LICENSE)
 
-
-</center>
-
--------------------------------
-
 Hate build conditional _lists, phrases, texts_? Me too. This library is made to avoid code boilerplate when building
 lists, and also avoid things like: `Josecleiton likes: apple, bananas, grapes` 
 or `Josecleiton likes: apple, grapes and also do null`, you could simply:
