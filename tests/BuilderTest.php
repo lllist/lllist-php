@@ -6,22 +6,37 @@ class BuilderTest extends TestCase
 {
     public function testTruncate()
     {
-        $list = lllist(", ")
-            ->truncate(3, lllist(", ", " and ")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s")
-                ->pluralizef(null, "%s", "%s"))
-            ->strictAppendf("%dm²", 0)
+        $list = lllist(', ')
+            ->truncate(3, lllist(', ', ' and ')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s')
+                ->pluralizef(null, '%s', '%s'))
+            ->strictAppendf('%dm²', 0)
             ->append(null)
-            ->sep(" - ")
-            ->append("Hehe");
+            ->sep(' - ')
+            ->append('Hehe');
 
-        $this->assertEquals("Hehe", $list->compile());
+        $this->assertEquals('Hehe', $list->compile());
+    }
+
+    public function testPluralizef()
+    {
+        $list = lllist(', ', ' and ')
+            ->pluralizef(0, '%s', '%s', 'hehe %s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s')
+            ->pluralizef(0, '%s', '%s');
+
+        $this->assertEquals('hehe 0', $list->compile());
     }
 
     public function testDoc1()
@@ -63,9 +78,10 @@ class BuilderTest extends TestCase
     {
         $list = lllist();
 
-        $list->append("a");
+        $list->append('a');
 
-        $this->assertEquals("a", $list->compile());;
+        $this->assertEquals('a', $list->compile());
+        ;
     }
 
     public function testAppend2()
@@ -73,10 +89,10 @@ class BuilderTest extends TestCase
         $list = lllist();
 
         $list
-            ->append("a")
-            ->append("b");
+            ->append('a')
+            ->append('b');
 
-        $this->assertEquals("a b", $list->compile());
+        $this->assertEquals('a b', $list->compile());
     }
 
     public function testAppendNull()
@@ -84,40 +100,40 @@ class BuilderTest extends TestCase
         $list = lllist();
 
         $list
-            ->append("a")
+            ->append('a')
             ->append(null)
-            ->append("b");
+            ->append('b');
 
-        $this->assertEquals("a b", $list->compile());
+        $this->assertEquals('a b', $list->compile());
     }
 
     public function testMerge()
     {
         $list = lllist();
 
-        $list2 = lllist(", ")
+        $list2 = lllist(', ')
             ->append(null)
             ->append('1')
             ->append(null)
             ->append('2');
 
         $list
-            ->append("a")
-            ->merge($list2, " - ", " and also ")
-            ->append("b");
+            ->append('a')
+            ->merge($list2, ' - ', ' and also ')
+            ->append('b');
 
 
-        $this->assertEquals("a - 1, 2 and also b", $list->compile());
+        $this->assertEquals('a - 1, 2 and also b', $list->compile());
     }
 
     public function testItemsf()
     {
-        $list = lllist(", ");
+        $list = lllist(', ');
 
         $list->itemsf('item %s', [0, 1, 2, 3], function ($x) {
             return $x > 0;
         });
 
-        $this->assertEquals("item 1, item 2, item 3", $list->compile());
+        $this->assertEquals('item 1, item 2, item 3', $list->compile());
     }
 }

@@ -19,7 +19,7 @@ class Builder
      */
     private $defaultLastSeparator = null;
 
-    public function __construct(string $defaultSeparator = " ", ?string $defaultLastSeparator = null)
+    public function __construct(string $defaultSeparator = ' ', ?string $defaultLastSeparator = null)
     {
         $this->defaultSeparator = Part::newSeparator($defaultSeparator);
 
@@ -134,7 +134,7 @@ class Builder
 
     public function pluralizef($value, $singularFormat, $pluralFormat, $noneFormat = null)
     {
-        if ($value < 1) {
+        if ($value < 1 && $noneFormat !== null) {
             return $this->appendf($noneFormat, $value);
         } elseif ($value === 1) {
             return $this->appendf($singularFormat, $value);
@@ -147,7 +147,7 @@ class Builder
 
     public function pluralize($value, $singular, $plural, $none = null)
     {
-        if ($value < 1) {
+        if ($value < 1 && $none !== null) {
             return $this->append($none);
         } elseif ($value === 1) {
             return $this->append($singular);
@@ -218,7 +218,7 @@ class Builder
             return null;
         }
 
-        return join("", $output);
+        return join('', $output);
     }
 
     public function sep($separator)
@@ -296,5 +296,4 @@ class Builder
 
         return $parts;
     }
-
 }
