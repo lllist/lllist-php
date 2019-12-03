@@ -2,6 +2,8 @@
 
 namespace Lllist;
 
+use Closure;
+
 class Part
 {
     const TYPE_FIRST = 0;
@@ -46,7 +48,7 @@ class Part
             return $this->value->compile();
         }
 
-        if (is_callable($this->value)) {
+        if ($this->value instanceof Closure) {
             $fn = $this->value;
 
             return $fn();
